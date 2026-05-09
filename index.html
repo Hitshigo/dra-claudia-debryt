@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dra. Cláudia Débryt — Fisioterapia & Bem-Estar | Lisboa</title>
+  <meta name="description" content="Fisioterapia especializada, laser depilação e bem-estar em Lisboa. Agende a sua consulta com a Dra. Cláudia Débryt na Av. João XXI." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── RESET & TOKENS ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --primary:   #2D7A6B;
+      --primary-d: #1f5a4e;
+      --primary-l: #e6f2f0;
+      --gold:      #C9A84C;
+      --terra:     #C97A5A;
+      --cream:     #F7F3EE;
+      --beige:     #EDE7DD;
+      --dark:      #1C1C1C;
+      --mid:       #4A4A4A;
+      --light:     #7A7A7A;
+      --white:     #FFFFFF;
+
+      --r-sm: 8px;
+      --r-md: 14px;
+      --r-lg: 24px;
+
+      --shadow-sm: 0 2px 8px rgba(45,122,107,0.08);
+      --shadow-md: 0 6px 24px rgba(45,122,107,0.12), 0 2px 8px rgba(0,0,0,0.06);
+      --shadow-lg: 0 16px 48px rgba(45,122,107,0.15), 0 4px 16px rgba(0,0,0,0.08);
+
+      --ease: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--white);
+      color: var(--dark);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    img { display: block; max-width: 100%; }
+
+    /* ── TYPOGRAPHY ── */
+    h1, h2, h3, .display {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--light);
+      max-width: 52ch;
+      line-height: 1.7;
+    }
+
+    /* ── BUTTONS ── */
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--primary);
+      color: var(--white);
+      padding: 0.875rem 2rem;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.25s var(--ease), box-shadow 0.25s var(--ease), transform 0.2s var(--ease);
+      box-shadow: var(--shadow-md);
+    }
+    .btn-primary:hover { background: var(--primary-d); box-shadow: var(--shadow-lg); transform: translateY(-2px); }
+    .btn-primary:active { transform: translateY(0); }
+
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--primary);
+      padding: 0.875rem 2rem;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+      border: 1.5px solid var(--primary);
+      transition: background 0.25s var(--ease), color 0.25s var(--ease);
+    }
+    .btn-ghost:hover { background: var(--primary); color: var(--white); }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(45,122,107,0.08);
+      transition: box-shadow 0.3s var(--ease);
+    }
+    nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .nav-logo {
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+    }
+    .nav-logo-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+    }
+    .nav-logo-tagline {
+      font-size: 0.68rem;
+      color: var(--primary);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--mid);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s var(--ease);
+      position: relative;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -2px; left: 0;
+      width: 0; height: 1.5px;
+      background: var(--primary);
+      transition: width 0.25s var(--ease);
+    }
+    .nav-links a:hover { color: var(--primary); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta-desktop {
+      background: var(--primary);
+      color: var(--white);
+      padding: 0.6rem 1.4rem;
+      border-radius: 50px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background 0.25s var(--ease), transform 0.2s var(--ease);
+    }
+    .nav-cta-desktop:hover { background: var(--primary-d); transform: translateY(-1px); }
+
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--dark);
+      border-radius: 2px;
+      transition: all 0.3s var(--ease);
+    }
+
+    /* ── MOBILE MENU ── */
+    .mobile-menu {
+      position: fixed;
+      top: 72px; left: 0; right: 0;
+      background: var(--white);
+      border-bottom: 1px solid var(--beige);
+      padding: 1.5rem 2rem 2rem;
+      display: none;
+      flex-direction: column;
+      gap: 1.25rem;
+      z-index: 99;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      text-decoration: none;
+      color: var(--mid);
+      font-size: 1rem;
+      font-weight: 500;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid var(--beige);
+    }
+    .mobile-menu a:last-child { border-bottom: none; }
+    .mobile-cta {
+      background: var(--primary) !important;
+      color: var(--white) !important;
+      border: none !important;
+      padding: 0.875rem 2rem !important;
+      border-radius: 50px;
+      text-align: center;
+      margin-top: 0.5rem;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
+      padding-top: 72px;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 60% at 30% 50%, rgba(45,122,107,0.05) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 80% 20%, rgba(201,168,76,0.06) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      padding: 5rem 3rem 5rem 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--primary-l);
+      color: var(--primary);
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.6s var(--ease) 0ms forwards;
+    }
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--primary);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    .hero-title {
+      font-size: clamp(2.8rem, 5vw, 4.2rem);
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 1.25rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.6s var(--ease) 150ms forwards;
+    }
+    .hero-title em {
+      font-style: italic;
+      color: var(--primary);
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--mid);
+      max-width: 46ch;
+      margin-bottom: 2.5rem;
+      line-height: 1.75;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.6s var(--ease) 300ms forwards;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.6s var(--ease) 450ms forwards;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 2rem;
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--beige);
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.6s var(--ease) 600ms forwards;
+    }
+    .hero-stat-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: 0.8rem;
+      color: var(--light);
+      margin-top: 0.25rem;
+    }
+
+    .hero-img-wrap {
+      position: relative;
+      height: 100%;
+      min-height: 600px;
+      overflow: hidden;
+      opacity: 0;
+      animation: fadeIn 0.8s var(--ease) 200ms forwards;
+    }
+    .hero-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+    }
+    .hero-img-wrap::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, var(--cream) 0%, transparent 20%);
+      pointer-events: none;
+    }
+
+    .hero-card {
+      position: absolute;
+      bottom: 2.5rem;
+      left: -2rem;
+      background: var(--white);
+      border-radius: var(--r-lg);
+      padding: 1.25rem 1.5rem;
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      max-width: 260px;
+      z-index: 2;
+    }
+    .hero-card-icon {
+      width: 44px;
+      height: 44px;
+      background: var(--primary-l);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.25rem;
+    }
+    .hero-card-text strong {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--dark);
+    }
+    .hero-card-text span {
+      font-size: 0.78rem;
+      color: var(--light);
+    }
+
+    /* ── MARQUEE ── */
+    .marquee-bar {
+      background: var(--primary);
+      overflow: hidden;
+      padding: 0.85rem 0;
+    }
+    .marquee-track {
+      display: flex;
+      gap: 3rem;
+      width: max-content;
+      animation: marquee 30s linear infinite;
+    }
+    .marquee-item {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: rgba(255,255,255,0.9);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .marquee-dot {
+      width: 4px; height: 4px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+
+    /* ── SERVIÇOS ── */
+    #servicos {
+      padding: 7rem 0;
+      background: var(--white);
+    }
+
+    .section-header {
+      margin-bottom: 4rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.75rem;
+    }
+
+    .service-card {
+      background: var(--cream);
+      border-radius: var(--r-lg);
+      padding: 2.25rem;
+      border: 1.5px solid transparent;
+      transition: border-color 0.25s var(--ease), box-shadow 0.25s var(--ease), transform 0.25s var(--ease);
+      cursor: default;
+    }
+    .service-card:hover {
+      border-color: var(--primary);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+    }
+
+    .service-icon {
+      width: 52px;
+      height: 52px;
+      background: var(--primary-l);
+      border-radius: var(--r-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+      transition: background 0.25s var(--ease);
+    }
+    .service-card:hover .service-icon {
+      background: var(--primary);
+    }
+
+    .service-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .service-desc {
+      font-size: 0.9rem;
+      color: var(--light);
+      line-height: 1.65;
+    }
+
+    /* ── SOBRE ── */
+    #sobre {
+      padding: 7rem 0;
+      background: var(--cream);
+    }
+
+    .sobre-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .sobre-img-wrap {
+      position: relative;
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      aspect-ratio: 4/5;
+    }
+    .sobre-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      filter: brightness(1.08) contrast(1.04) saturate(1.05);
+    }
+
+    .sobre-badge-img {
+      position: absolute;
+      bottom: 1.5rem;
+      right: -1.5rem;
+      background: var(--white);
+      border-radius: var(--r-md);
+      padding: 1rem 1.25rem;
+      box-shadow: var(--shadow-lg);
+      text-align: center;
+    }
+    .sobre-badge-img strong {
+      display: block;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--primary);
+      line-height: 1;
+    }
+    .sobre-badge-img span {
+      font-size: 0.75rem;
+      color: var(--light);
+    }
+
+    .sobre-content {}
+
+    .sobre-content h2 {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 1.25rem;
+    }
+
+    .sobre-content p {
+      color: var(--mid);
+      font-size: 0.975rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .sobre-list {
+      list-style: none;
+      margin: 2rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+    .sobre-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      font-size: 0.925rem;
+      color: var(--mid);
+    }
+    .sobre-list li::before {
+      content: '✓';
+      width: 20px;
+      height: 20px;
+      background: var(--primary);
+      color: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+    }
+
+    /* ── ESPAÇO ── */
+    #espaco {
+      padding: 7rem 0;
+      background: var(--white);
+    }
+
+    .espaco-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 3rem;
+    }
+
+    .espaco-img {
+      border-radius: var(--r-lg);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+    .espaco-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s var(--ease);
+    }
+    .espaco-img:hover img { transform: scale(1.03); }
+
+    .espaco-img.tall { aspect-ratio: 3/4; }
+
+    .espaco-right {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    /* ── HORÁRIO ── */
+    .horario-section {
+      background: var(--primary);
+      padding: 4rem 0;
+    }
+
+    .horario-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .horario-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+    .horario-sub {
+      color: rgba(255,255,255,0.7);
+      font-size: 0.9rem;
+    }
+
+    .horario-grid {
+      display: grid;
+      gap: 0.5rem;
+    }
+    .horario-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.65rem 1rem;
+      border-radius: var(--r-sm);
+      background: rgba(255,255,255,0.06);
+      font-size: 0.875rem;
+    }
+    .horario-row .dia { color: rgba(255,255,255,0.8); font-weight: 500; }
+    .horario-row .hora { color: var(--white); font-weight: 600; }
+    .horario-row.fechado .hora { color: rgba(255,255,255,0.4); }
+    .horario-row.today {
+      background: rgba(255,255,255,0.14);
+      border-left: 3px solid var(--gold);
+    }
+
+    /* ── REVIEWS ── */
+    #reviews {
+      padding: 6rem 0;
+      background: var(--cream);
+    }
+
+    .review-card {
+      background: var(--white);
+      border-radius: var(--r-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      max-width: 560px;
+      margin: 3rem auto 0;
+    }
+
+    .stars {
+      color: var(--gold);
+      font-size: 1.1rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 1rem;
+    }
+
+    .review-text {
+      font-size: 1.05rem;
+      color: var(--mid);
+      line-height: 1.75;
+      font-style: italic;
+      margin-bottom: 1.25rem;
+    }
+
+    .review-author {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--dark);
+    }
+    .review-source {
+      font-size: 0.78rem;
+      color: var(--light);
+    }
+
+    /* ── CONTACTO ── */
+    #contacto {
+      padding: 7rem 0;
+      background: var(--white);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      align-items: start;
+    }
+
+    .contact-info h2 {
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 1rem;
+    }
+
+    .contact-info p {
+      color: var(--mid);
+      font-size: 0.95rem;
+      line-height: 1.75;
+      margin-bottom: 2rem;
+    }
+
+    .contact-items {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .contact-item-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--primary-l);
+      border-radius: var(--r-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .contact-item-text strong {
+      display: block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--light);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 0.2rem;
+    }
+    .contact-item-text a,
+    .contact-item-text span {
+      font-size: 0.95rem;
+      color: var(--dark);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-item-text a:hover { color: var(--primary); }
+
+    /* Form */
+    .contact-form {
+      background: var(--cream);
+      border-radius: var(--r-lg);
+      padding: 2.5rem;
+    }
+
+    .form-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.7rem;
+      font-weight: 600;
+      color: var(--dark);
+      margin-bottom: 1.75rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+      margin-bottom: 1rem;
+    }
+    .form-group:last-of-type { margin-bottom: 0; }
+
+    .form-group label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--mid);
+      letter-spacing: 0.04em;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      padding: 0.75rem 1rem;
+      border: 1.5px solid var(--beige);
+      border-radius: var(--r-sm);
+      font-size: 0.925rem;
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--dark);
+      background: var(--white);
+      transition: border-color 0.2s var(--ease), box-shadow 0.2s var(--ease);
+      outline: none;
+      width: 100%;
+    }
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(45,122,107,0.1);
+    }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+
+    .form-consent { margin-top: 1.25rem; }
+    .consent-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.625rem;
+      font-size: 0.875rem;
+      color: #555;
+      cursor: pointer;
+    }
+    .consent-label input[type="checkbox"] {
+      margin-top: 0.2rem;
+      flex-shrink: 0;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+    .consent-label a { color: var(--primary); text-decoration: underline; }
+
+    .form-submit {
+      width: 100%;
+      margin-top: 1.5rem;
+      padding: 0.95rem;
+      background: var(--primary);
+      color: var(--white);
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 500;
+      font-family: 'Inter', sans-serif;
+      cursor: pointer;
+      transition: background 0.25s var(--ease), transform 0.2s var(--ease), box-shadow 0.25s var(--ease);
+      box-shadow: var(--shadow-sm);
+    }
+    .form-submit:hover { background: var(--primary-d); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .form-submit:active { transform: translateY(0); }
+
+    .form-status {
+      margin-top: 1rem;
+      padding: 0.75rem 1rem;
+      border-radius: var(--r-sm);
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: none;
+    }
+    .form-status.success { background: #e6f4f0; color: var(--primary); display: block; }
+    .form-status.error { background: #fde8e8; color: #b91c1c; display: block; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.65);
+      padding: 3rem 0 2rem;
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-brand-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+    .footer-brand-tag {
+      font-size: 0.75rem;
+      color: var(--primary);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+    .footer-desc { font-size: 0.875rem; line-height: 1.7; max-width: 34ch; }
+
+    .footer-col h4 {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--white);
+      margin-bottom: 1rem;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
+    .footer-links a {
+      color: rgba(255,255,255,0.6);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--white); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+    }
+
+    .footer-bottom a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-bottom a:hover { color: var(--white); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.4); opacity: 0.7; }
+    }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-content { padding: 5rem 2rem 5rem 0; }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links, .nav-cta-desktop { display: none; }
+      .nav-hamburger { display: flex; }
+
+      .hero {
+        grid-template-columns: 1fr;
+        min-height: auto;
+        padding-top: 72px;
+      }
+      .hero-content {
+        padding: 4rem 0 2rem;
+        order: 2;
+      }
+      .hero-img-wrap {
+        order: 1;
+        min-height: 400px;
+        width: 100%;
+      }
+      .hero-img-wrap img { opacity: 0.8; }
+      .hero-img-wrap::after {
+        background: linear-gradient(to bottom, transparent 50%, var(--cream) 100%);
+      }
+      .hero-stats { gap: 1.5rem; }
+      .hero-card { left: 1rem; bottom: 1rem; }
+
+      .sobre-grid { grid-template-columns: 1fr; }
+      .sobre-img-wrap { aspect-ratio: 3/2; }
+      .sobre-badge-img { right: 1rem; }
+
+      .espaco-grid { grid-template-columns: 1fr; }
+      .espaco-img.tall { aspect-ratio: 3/2; }
+
+      .horario-inner { grid-template-columns: 1fr; gap: 2rem; }
+
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+
+      .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .footer-bottom { flex-direction: column; gap: 0.75rem; text-align: center; }
+
+      .services-grid { grid-template-columns: 1fr; }
+
+      .form-row { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 480px) {
+      .container { padding: 0 1.25rem; }
+      .hero-content { padding: 3rem 0 2rem; }
+      .hero-stats { flex-wrap: wrap; gap: 1rem; }
+      .contact-form { padding: 1.75rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav id="navbar">
+    <div class="container">
+      <div class="nav-inner">
+        <a href="#" class="nav-logo">
+          <span class="nav-logo-name">Dra. Cláudia Débryt</span>
+          <span class="nav-logo-tagline">Fisioterapia & Bem-Estar</span>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#sobre">Sobre Mim</a></li>
+          <li><a href="#espaco">O Espaço</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+        </ul>
+
+        <a href="#contacto" class="nav-cta-desktop">Marcar Consulta</a>
+
+        <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#servicos">Serviços</a>
+    <a href="#sobre">Sobre Mim</a>
+    <a href="#espaco">O Espaço</a>
+    <a href="#contacto">Contacto</a>
+    <a href="#contacto" class="mobile-cta">Marcar Consulta</a>
+  </div>
+
+  <!-- ── HERO ── -->
+  <section class="hero">
+    <div class="hero-content container" style="padding-left: 2rem;">
+      <div class="hero-badge">Clínica em Lisboa · Av. João XXI</div>
+
+      <h1 class="hero-title">
+        Recupere o seu<br><em>bem-estar</em><br>com cuidado especializado
+      </h1>
+
+      <p class="hero-desc">
+        Fisioterapia personalizada e tratamentos de bem-estar para que viva sem dor e com mais qualidade de vida. Em Lisboa, ao seu ritmo.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#contacto" class="btn-primary">Marcar Consulta</a>
+        <a href="tel:931132840" class="btn-ghost">931 132 840</a>
+      </div>
+
+      <div class="hero-stats">
+        <div>
+          <div class="hero-stat-value" data-count="5">5</div>
+          <div class="hero-stat-label">Estrelas Google</div>
+        </div>
+        <div>
+          <div class="hero-stat-value">Seg–Sáb</div>
+          <div class="hero-stat-label">Aberto 6 dias</div>
+        </div>
+        <div>
+          <div class="hero-stat-value">Hoje</div>
+          <div class="hero-stat-label">Disponível</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-img-wrap">
+      <img src="brand_assets/foto1.jpg" alt="Dra. Cláudia Débryt — Fisioterapeuta" />
+
+      <div class="hero-card">
+        <div class="hero-card-icon">⭐</div>
+        <div class="hero-card-text">
+          <strong>5/5 no Google</strong>
+          <span>Clientes satisfeitos</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── MARQUEE ── -->
+  <div class="marquee-bar" aria-hidden="true">
+    <div class="marquee-track">
+      <div class="marquee-item"><span class="marquee-dot"></span> Fisioterapia</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Laser Depilação</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Massagem Terapêutica</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Reabilitação</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Bem-Estar</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Pilates Clínico</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Consultas em Lisboa</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Fisioterapia</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Laser Depilação</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Massagem Terapêutica</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Reabilitação</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Bem-Estar</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Pilates Clínico</div>
+      <div class="marquee-item"><span class="marquee-dot"></span> Consultas em Lisboa</div>
+    </div>
+  </div>
+
+  <!-- ── SERVIÇOS ── -->
+  <section id="servicos">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label">O que fazemos</p>
+        <h2 class="section-title">Tratamentos especializados<br>para o seu corpo e bem-estar</h2>
+        <p class="section-sub">Cada tratamento é adaptado às suas necessidades, com técnicas comprovadas e acompanhamento personalizado.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon">🦴</div>
+          <div class="service-name">Fisioterapia</div>
+          <p class="service-desc">Avaliação e tratamento de lesões musculoesqueléticas, dores crónicas e problemas posturais. Recuperação segura e eficaz.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">✨</div>
+          <div class="service-name">Laser Depilação</div>
+          <p class="service-desc">Laser de alta potência para resultados duradouros. Tratamentos seguros e adaptados ao seu tipo de pele e pilosidade.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">🙌</div>
+          <div class="service-name">Massagem Terapêutica</div>
+          <p class="service-desc">Massagem desportiva, relaxante e terapêutica. Alivia tensão muscular, melhora a circulação e promove o bem-estar.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">🧘</div>
+          <div class="service-name">Pilates Clínico</div>
+          <p class="service-desc">Exercícios de controlo motor supervisionados por fisioterapeuta. Ideal para reabilitação e prevenção de lesões.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">⚡</div>
+          <div class="service-name">Electroterapia</div>
+          <p class="service-desc">Utilização de correntes elétricas terapêuticas para alívio da dor, redução de inflamação e aceleração da recuperação.</p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">🏥</div>
+          <div class="service-name">Reabilitação Pós-Cirurgia</div>
+          <p class="service-desc">Programa estruturado de retorno à função plena após intervenção cirúrgica. Acompanhamento em todas as fases.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SOBRE ── -->
+  <section id="sobre">
+    <div class="container">
+      <div class="sobre-grid">
+        <div class="sobre-img-wrap reveal">
+          <img src="brand_assets/foto1.jpg" alt="Dra. Cláudia Débryt" />
+          <div class="sobre-badge-img">
+            <strong>5★</strong>
+            <span>Google Reviews</span>
+          </div>
+        </div>
+
+        <div class="sobre-content reveal">
+          <p class="section-label">Sobre Mim</p>
+          <h2>Uma fisioterapeuta ao seu lado em cada passo</h2>
+
+          <p>Sou a Dra. Cláudia Débryt, fisioterapeuta com paixão pelo bem-estar dos meus pacientes. Acredito que cada pessoa merece um tratamento verdadeiramente personalizado — não há duas situações iguais, e o meu trabalho começa por ouvir.</p>
+
+          <p>Trabalho no espaço Evabela — Centro de Bem-Estar, na Avenida João XXI em Lisboa, um ambiente moderno e acolhedor onde pode recuperar, regenerar e sentir-se melhor consigo próprio.</p>
+
+          <p>A minha abordagem combina fisioterapia clássica com técnicas complementares, sempre com foco nos resultados e no seu conforto ao longo de todo o processo.</p>
+
+          <ul class="sobre-list">
+            <li>Avaliação inicial completa e personalizada</li>
+            <li>Plano de tratamento adaptado aos seus objetivos</li>
+            <li>Acompanhamento contínuo e ajuste do plano</li>
+            <li>Ambiente tranquilo e profissional em Lisboa</li>
+          </ul>
+
+          <a href="#contacto" class="btn-primary">Marcar a Minha Consulta</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── ESPAÇO ── -->
+  <section id="espaco">
+    <div class="container">
+      <div class="section-header reveal" style="text-align: center;">
+        <p class="section-label">O Espaço</p>
+        <h2 class="section-title">Um ambiente pensado<br>para o seu bem-estar</h2>
+        <p class="section-sub" style="margin: 0 auto;">Instalações modernas e acolhedoras, projetadas para que se sinta confortável e em segurança.</p>
+      </div>
+
+      <div class="espaco-grid">
+        <div class="espaco-img tall reveal">
+          <img src="brand_assets/foto2.jpg" alt="Espaço Evabela — Entrada" />
+        </div>
+        <div class="espaco-right">
+          <div class="espaco-img reveal">
+            <img src="brand_assets/foto6.jpg" alt="Interior do espaço — corredor" />
+          </div>
+          <div class="espaco-img reveal">
+            <img src="brand_assets/foto4.jpg" alt="Fisioterapia — bem-estar em movimento" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── HORÁRIO ── -->
+  <div class="horario-section">
+    <div class="container">
+      <div class="horario-inner">
+        <div class="reveal">
+          <h3 class="horario-title">Horário de Atendimento</h3>
+          <p class="horario-sub">Na Av. João XXI 10D, 1000-298 Lisboa</p>
+          <br />
+          <a href="tel:931132840" class="btn-primary" style="margin-top: 1rem; background: var(--white); color: var(--primary);">
+            📞 Ligar: 931 132 840
+          </a>
+        </div>
+
+        <div class="horario-grid reveal">
+          <div class="horario-row" id="seg"><span class="dia">Segunda-feira</span><span class="hora">14:30 – 19:00</span></div>
+          <div class="horario-row" id="ter"><span class="dia">Terça-feira</span><span class="hora">14:30 – 19:00</span></div>
+          <div class="horario-row" id="qua"><span class="dia">Quarta-feira</span><span class="hora">14:30 – 19:00</span></div>
+          <div class="horario-row" id="qui"><span class="dia">Quinta-feira</span><span class="hora">14:30 – 19:00</span></div>
+          <div class="horario-row" id="sex"><span class="dia">Sexta-feira</span><span class="hora">14:30 – 19:00</span></div>
+          <div class="horario-row" id="sab"><span class="dia">Sábado</span><span class="hora">10:00 – 14:00</span></div>
+          <div class="horario-row fechado" id="dom"><span class="dia">Domingo</span><span class="hora">Fechado</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── REVIEWS ── -->
+  <section id="reviews">
+    <div class="container" style="text-align: center;">
+      <div class="reveal">
+        <p class="section-label">O que dizem os pacientes</p>
+        <h2 class="section-title">5 estrelas no Google</h2>
+      </div>
+
+      <div class="review-card reveal">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">
+          "A Dra. Cláudia é uma profissional excecional. Tratamento personalizado, sempre disponível para esclarecer dúvidas e resultados visíveis desde as primeiras sessões. Recomendo vivamente a todos."
+        </p>
+        <div class="review-author">Paciente Google</div>
+        <div class="review-source">⭐ 5/5 · Google Reviews</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTACTO ── -->
+  <section id="contacto">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <p class="section-label">Contacto</p>
+          <h2>Pronto para começar<br>a sua recuperação?</h2>
+          <p>Preencha o formulário ou entre em contacto diretamente. Respondo brevemente para agendar a sua consulta.</p>
+
+          <div class="contact-items">
+            <div class="contact-item">
+              <div class="contact-item-icon">📍</div>
+              <div class="contact-item-text">
+                <strong>Morada</strong>
+                <span>Av. João XXI 10D, 1000-298 Lisboa</span>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-item-icon">📞</div>
+              <div class="contact-item-text">
+                <strong>Telefone</strong>
+                <a href="tel:931132840">931 132 840</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-item-icon">✉️</div>
+              <div class="contact-item-text">
+                <strong>Email</strong>
+                <a href="mailto:contacto@claudiadebryt.pt">contacto@claudiadebryt.pt</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-item-icon">📱</div>
+              <div class="contact-item-text">
+                <strong>Instagram</strong>
+                <a href="https://www.instagram.com/claudiamagalhaesfisio" target="_blank" rel="noopener">@claudiamagalhaesfisio</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form reveal">
+          <p class="form-title">Marcar Consulta</p>
+
+          <form id="contactForm" action="/api/contact" method="POST">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" id="nome" name="nome" placeholder="O seu nome" required />
+              </div>
+              <div class="form-group">
+                <label for="telefone">Telefone</label>
+                <input type="tel" id="telefone" name="telefone" placeholder="9XX XXX XXX" required />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="o.seu@email.com" required />
+            </div>
+
+            <div class="form-group">
+              <label for="servico">Serviço de interesse</label>
+              <select id="servico" name="servico">
+                <option value="">Selecionar serviço</option>
+                <option>Fisioterapia</option>
+                <option>Laser Depilação</option>
+                <option>Massagem Terapêutica</option>
+                <option>Pilates Clínico</option>
+                <option>Electroterapia</option>
+                <option>Reabilitação Pós-Cirurgia</option>
+                <option>Outro</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="mensagem">Mensagem</label>
+              <textarea id="mensagem" name="mensagem" placeholder="Descreva brevemente a sua situação ou questão..."></textarea>
+            </div>
+
+            <div class="form-consent">
+              <label class="consent-label">
+                <input type="checkbox" id="consent" name="consent" required />
+                <span>Li e aceito a <a href="politica-privacidade.html" target="_blank">Política de Privacidade</a></span>
+              </label>
+            </div>
+
+            <button type="submit" class="form-submit">Enviar Pedido de Consulta</button>
+            <div class="form-status" id="formStatus"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-brand-name">Dra. Cláudia Débryt</div>
+          <div class="footer-brand-tag">Fisioterapia & Bem-Estar</div>
+          <p class="footer-desc">Cuidados de saúde personalizados em Lisboa. Porque o seu bem-estar é uma prioridade, não uma opção.</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Serviços</h4>
+          <ul class="footer-links">
+            <li><a href="#servicos">Fisioterapia</a></li>
+            <li><a href="#servicos">Laser Depilação</a></li>
+            <li><a href="#servicos">Massagem Terapêutica</a></li>
+            <li><a href="#servicos">Pilates Clínico</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <ul class="footer-links">
+            <li><a href="tel:931132840">931 132 840</a></li>
+            <li><a href="mailto:contacto@claudiadebryt.pt">contacto@claudiadebryt.pt</a></li>
+            <li><a href="#contacto">Marcar Consulta</a></li>
+            <li><a href="https://www.instagram.com/claudiamagalhaesfisio" target="_blank" rel="noopener">Instagram</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Dra. Cláudia Débryt — Todos os direitos reservados</span>
+        <a href="politica-privacidade.html">Política de Privacidade</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── NAV SCROLL ──
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    // ── HAMBURGER ──
+    const hamburger = document.getElementById('hamburger');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    hamburger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('open');
+    });
+
+    mobileMenu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.remove('open');
+      });
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!hamburger.contains(e.target) && !mobileMenu.contains(e.target)) {
+        mobileMenu.classList.remove('open');
+      }
+    });
+
+    // ── HIGHLIGHT TODAY ──
+    const days = ['dom', 'seg', 'ter', 'qua', 'qui', 'sex', 'sab'];
+    const todayId = days[new Date().getDay()];
+    const todayRow = document.getElementById(todayId);
+    if (todayRow) todayRow.classList.add('today');
+
+    // ── SCROLL REVEAL ──
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(el => observer.observe(el));
+
+    // ── FORM SUBMIT ──
+    document.getElementById('contactForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = e.target.querySelector('.form-submit');
+      const status = document.getElementById('formStatus');
+      btn.textContent = 'A enviar...';
+      btn.disabled = true;
+
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(Object.fromEntries(new FormData(e.target)))
+        });
+        if (res.ok) {
+          status.textContent = 'Mensagem enviada com sucesso! Entrarei em contacto brevemente.';
+          status.className = 'form-status success';
+          e.target.reset();
+        } else throw new Error();
+      } catch {
+        status.textContent = 'Ocorreu um erro. Por favor, ligue diretamente para 931 132 840.';
+        status.className = 'form-status error';
+      }
+      btn.textContent = 'Enviar Pedido de Consulta';
+      btn.disabled = false;
+    });
+  </script>
+</body>
+</html>
